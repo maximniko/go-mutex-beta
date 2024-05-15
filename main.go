@@ -19,8 +19,8 @@ func (cb *CakeBowl) AddIngredient(ingredient string) {
 
 func (cb *CakeBowl) ingredientsAdded() bool {
 	// modify the code here
-	cb.mu.Lock()
-	defer cb.mu.Unlock()
+	cb.mu.RLock()
+	defer cb.mu.RUnlock()
 	time.Sleep(1 * time.Second)
 	for _, added := range cb.ingredients {
 		if !added {
